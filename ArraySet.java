@@ -84,7 +84,7 @@ public class ArraySet<E> implements SortedSet<E> {
 	
 	if(size == 0) {
 	    if(size == data.length)
-		resize();
+		resize(capacity);
 	    data[size++] = e;
 	    return true;
 	}
@@ -92,7 +92,7 @@ public class ArraySet<E> implements SortedSet<E> {
 	// Appends e to the end of this set
 	if(comparator.compare(data[size-1], e) < 0) {
 	    if(size == data.length)
-		resize();
+		resize(capacity);
 	    data[size++] = e;
 	    return true;
 	}
@@ -114,7 +114,7 @@ public class ArraySet<E> implements SortedSet<E> {
 	}
 	
 	if(size == data.length) 
-	    resize();
+	    resize(capacity);
 
 	/* We have to increment the position of all the elements in range [index, size] */
 	
