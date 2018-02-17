@@ -131,8 +131,15 @@ public class ArraySet<E> implements SortedSet<E> {
 	return true;
     }
     
-    // resize the internal array. The new array length will be old_length + capacity
-    private void resize() {   
+   /** Resizes the internal array. The new array length will be old_length + capacity.
+    * This method is called automatically when more space is required. If an unusual number of elements
+    * are going to be added and it is not wanted to change the capacity of the set for some reason, this method
+    * could be used as a "preparation" for the ArraySet to perform the add operations without resizing 
+    * frequently
+    */
+    public void resize(int capacity) {  
+	if(capacity <= 0)
+	    throw new IllegalArgumentException("Capacity must be > 0");
 	data = Arrays.copyOf(data, data.length+capacity);
     }
 
