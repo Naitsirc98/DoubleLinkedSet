@@ -24,9 +24,9 @@ public class ArraySet<E> implements SortedSet<E> {
     // Internal array to store the elements
     private Object[] data; 
     // Capacity of the set. This determines how much the set grows each time it has to be resized
-    private volatile int capacity = 10; 
+    private int capacity = 10; 
     // Number of non-null elements in this set
-    private volatile int size = 0;
+    private int size = 0;
     // Comparator that performs the sortering job in this set
     private Comparator<Object> comparator = new HashComparator();
     
