@@ -358,9 +358,19 @@ public class ArraySet<E> implements SortedSet<E> {
 	return true;
     }
     
-    // To remove any element, e, we just have to decrement the position of the elements from last index to the
-    // e's position, so that finally e will be substituted by its next element
-    public void remove(int index) {
+    /** 
+    * To remove any element, e, we just have to decrement the position of the elements from last index to the
+    * e's position, so that finally e will be substituted by its next element
+    *
+    * @param {@code int} the index of the element about to remove 
+    * 
+    * @throws {@code ArrayIndexOutOfBoundsException} if the index is out of range
+    *
+    */ 
+    public void remove(final int index) {
+	    
+	if(index < 0 || index > size)
+		throw new ArrayIndexOutOfBoundsException(index+" is out of range [0, "+size+"]");
 	
 	Object tmp = data[size-1];
 	data[size-1] = null;
