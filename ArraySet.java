@@ -109,7 +109,7 @@ public class ArraySet<E> implements SortedSet<E> {
 		return false; 
 	    }
 	
-	    // now index is where e have to be
+	    // now index is the position where e have to be
 	    index = -(index+1);
 	}
 	
