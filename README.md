@@ -1,2 +1,2 @@
-# LinkedSet
-A LinkedSet implementation in Java. It does not allow repeated elements and does not have order.
+# My own and experimental implementations of the Java Collections library
+I'm studing Java language and I want to learn and experiment by creating my own sets, lists and maps.
