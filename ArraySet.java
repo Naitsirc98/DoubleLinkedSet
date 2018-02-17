@@ -401,6 +401,96 @@ public class ArraySet<E> implements SortedSet<E> {
 	return changed;
     }
 
+    /**
+     * Returns the first element that meets the condition
+     * 
+     * @param {@link Predicate} the condition to be tested
+     * 
+     *  @return {@code E} the first element that meets the condition, or null if any of them do
+     *  
+     * */
+    public E getAny(Predicate<E> condition) {
+	for(int i = 0;i < size;i++) {
+	    final E e = (E) data[i];
+	    if(condition.test(e))
+		return e;
+	}
+	return null;
+    }
+    
+    /**
+     * Returns the last element that meets the condition
+     * 
+     * @param {@link Predicate} the condition to be tested
+     * 
+     *  @return {@code E} the last element that meets the condition, or null if any of them do
+     *  
+     * */
+    public E getLast(Predicate<E> condition) {
+	for(int i = size-1;i >= 0;i--) {
+	    final E e = (E) data[i];
+	    if(condition.test(e))
+		return e;
+	}
+	return null;
+    }
+    
+    /**
+     * Returns an ArraySet that contains all the elements that meet the condition
+     * 
+     * @param {@link Predicate} the condition to be tested
+     * 
+     *  @return {@code ArraySet<E>} an ArraySet containing all the elements that meet the condition,
+     *   or an empty ArraySet if any of them do
+     *  
+     * */
+    public ArraySet<E> getAll(Predicate<E> condition) {
+	
+	ArraySet<E> set = new ArraySet<>(size);
+	
+	for(int i = 0;i < size;i++) {
+	    final E e = (E) data[i];
+	    if(condition.test(e))
+		set.add(e);
+	}
+	
+	set.trim();
+	
+	return set;
+	
+    }
+    /**
+     * Only retain those elements that meet the condition passed as argument. In other words, remove all elements
+     * that do not meet the condition  
+     * 
+     * @param {@link Predicate} the condition to be tested
+     * 
+     * @return {@code boolean} true if this set has changed after this method, false otherwise
+     * 
+     * */
+    public boolean retainIf(Predicate<E> condition) {
+	
+	boolean changed = false;
+	
+	for(int i = 0;i < size;i++) {
+	    final E e = (E) data[i];
+	    if(!condition.test(e)) {
+		changed = true;
+		remove(i);
+	    }
+		
+	}
+	return changed;
+    }
+    
+    /**
+     * Trims the ArraySet to the minimum size that it can hold all its elements, so that size = limit
+     * 
+     * */
+    public void trim() {
+	data = Arrays.copyOf(data,size);
+    }
+
     @Override
     public Object[] toArray() {
 	return Arrays.copyOf(data, size);
