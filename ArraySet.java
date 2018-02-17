@@ -57,7 +57,7 @@ public class ArraySet<E> implements SortedSet<E> {
      * */
     public ArraySet(Comparator<Object> comparator) {
 	this();
-	this.comparator = comparator;
+	setComparator(comparator);
     }
     
     /**
