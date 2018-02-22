@@ -231,6 +231,14 @@ public class ArraySet<E> implements SortedSet<E> {
      * 
      * */
     public int indexOf(Object e) {
+	    
+	if(comparator.compare(e, data[size-1]) > 0) {
+		return -size-1;
+	}
+	if(comparator.compare(e, data[0]) < 0) {
+		return -1;
+	}
+	    
 	int low = 0;
 	int high = size >>> 1;
 		
