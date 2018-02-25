@@ -424,7 +424,7 @@ public class ArraySet<E> implements SortedSet<E> {
      * 
      * @param {@link Predicate} the condition to be tested
      * 
-     *  @return {@code E} the first element that meets the condition, or null if any of them do
+     *  @return {@code E} the first element that meets the condition, or null if any of them does
      *  
      * */
     public E getAny(Predicate<E> condition) {
